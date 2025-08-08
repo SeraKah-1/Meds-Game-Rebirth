@@ -1,0 +1,14 @@
+{
+  "name": "meds-game",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "npx serve public",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vitest": "^2.0.0",
+    "zod": "^3.23.0"
+  }
+}
