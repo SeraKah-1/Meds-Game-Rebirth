@@ -4,10 +4,8 @@ export function extractJson(input: string): any {
     .replace(/^```(json)?/gim, '')
     .replace(/```$/gim, '')
     .trim();
-
   // 2) fast path
   try { return JSON.parse(stripped); } catch {}
-
   // 3) scan first balanced {...}
   const s = stripped;
   let depth = 0, start = -1;
@@ -33,5 +31,11 @@ export type CaseSchema = {
 };
 
 export function isCaseSchema(x: any): x is CaseSchema {
-  return x && x.case && typeof x.case.id === 'string' && typeof x.case.age === 'number';
+  // Always return a boolean by coercing the expression into a Boolean.
+  return Boolean(
+    x &&
+      (x as any).case &&
+      typeof (x as any).case.id === 'string' &&
+      typeof (x as any).case.age === 'number'
+  );
 }
